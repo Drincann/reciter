@@ -1,0 +1,40 @@
+{
+  "name": "reciter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "nodemon ./src/index.ts",
+    "build": "rm -r dist; tsc",
+    "buildall": "npm run build & cd front && npm run build && cd ..",
+    "start:dev": "ts-node .",
+    "start:prod": "node ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drincann/reciter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drincann/reciter/issues"
+  },
+  "homepage": "https://github.com/Drincann/reciter#readme",
+  "devDependencies": {
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/koa-static": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0"
+  }
+}
