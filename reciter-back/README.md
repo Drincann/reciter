@@ -17,15 +17,7 @@ Node.js/Browser
 ## build
 
 ```shell
-npm run buildall
-```
-
-它会做两件事，将后端通过 tsc 编译到 `./dist`，前端使用 vite 编译到 `./dist/public`。
-
-你也可以分别 build。
-
-```shell
-npm run build && cd front && npm run build ; cd ..
+npm run build
 ```
 
 ## start

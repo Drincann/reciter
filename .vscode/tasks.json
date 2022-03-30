@@ -4,7 +4,7 @@
 		{
 			"type": "npm",
 			"script": "dev",
-			"path": "front/",
+			"path": "reciter-front/",
 			"label": "run vite",
 			"detail": "vite",
 			"isBackground": true,

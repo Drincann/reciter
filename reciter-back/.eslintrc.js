@@ -14,7 +14,6 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': [
-        'vue',
         '@typescript-eslint'
     ],
     'rules': {
