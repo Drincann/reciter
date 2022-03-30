@@ -1,4 +1,4 @@
 export const config = {
-    port: 80,
-    staticRoot: __dirname + '/public',
+  port: 80,
+  staticRoot: __dirname + '/public',
 }

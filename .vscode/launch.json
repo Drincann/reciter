@@ -16,10 +16,10 @@
         {
             "console": "integratedTerminal",
             "name": "backend",
-            "program": "${workspaceFolder}/reciter-back-src/index.ts",
+            "program": "${workspaceFolder}/reciter-back/src/index.ts",
             "request": "launch",
-            "restart": true,
-            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nodemon",
+            "pwd": "${workspaceFolder}/reciter-back",
+            "runtimeExecutable": "${workspaceFolder}/reciter-back/node_modules/.bin/nodemon",
             "args": [
                 "--watch",
                 "${workspaceFolder}/src",

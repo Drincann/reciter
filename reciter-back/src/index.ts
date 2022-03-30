@@ -6,11 +6,11 @@ import serve from 'koa-static'
 const app = new Koa()
 
 app
-    .use(router.routes())
+  .use(router.routes())
 
-    .use(serve(config.staticRoot))
+  .use(serve(config.staticRoot))
 
-    .listen(config.port)
+  .listen(config.port)
 
 
 

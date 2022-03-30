@@ -7,15 +7,12 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     '@vue/eslint-config-typescript/recommended',
-    // "@vue/eslint-config-prettier",
   ],
+  plugins: ['prettier'],
   env: {
     'vue/setup-compiler-macros': true,
   },
   rules: {
-    indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
+    'prettier/prettier': 'error',
   },
 }
