@@ -42,3 +42,8 @@ function addWord() {
     </template>
   </el-dialog>
 </template>
+<style>
+.el-button {
+  height: 100%;
+}
+</style>
