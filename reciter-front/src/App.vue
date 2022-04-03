@@ -44,7 +44,7 @@ async function loadWords() {
     user: 'test',
     lastWord:
       words.value.length === 0 ? '' : words.value[words.value.length - 1].word,
-    count: 30,
+    count: 12,
   })
 
   ;(res.data.data as Array<WordRawData>).forEach((word: WordRawData, index) => {
