@@ -39,14 +39,17 @@ function sortWords() {
     return a.nextTime - b.nextTime
   })
 }
+
+let firstLoad = true
+loadWords()
 async function loadWords() {
   let res = await axios.post('/api/getWords', {
     user: 'test',
     lastWord:
       words.value.length === 0 ? '' : words.value[words.value.length - 1].word,
-    count: 12,
+    count: firstLoad ? 10 : 1,
   })
-
+  firstLoad = false
   ;(res.data.data as Array<WordRawData>).forEach((word: WordRawData, index) => {
     words.value.push({
       _id: word._id,
@@ -109,37 +112,40 @@ async function wordRemoved(_id: string) {
 </script>
 
 <template>
-  <el-scrollbar always> </el-scrollbar>
-  <div v-infinite-scroll="loadWords"></div>
-
-  <el-backtop :right="30" :bottom="80" />
-  <el-container>
-    <el-header :gutter="10">
-      <el-row>
-        <Searcher></Searcher>
-      </el-row>
-      <el-row>
-        <el-col :span="18">
-          <WordInfo v-bind="wordInfoData"></WordInfo>
-        </el-col>
-        <el-col :span="2" :offset="2">
-          <WordAdder @word-added="newWordAdded"></WordAdder>
-        </el-col>
-      </el-row>
-    </el-header>
-
-    <el-main class="main">
-      <Word
-        v-bind="word"
-        @word-removed="wordRemoved"
-        @word-passed="wordPassed"
-        @word-edited="wordEdited"
-        class="word-box"
-        v-for="(word, index) in words"
-        :key="index"
-      ></Word>
-    </el-main>
-  </el-container>
+  <div
+    class="infi"
+    v-infinite-scroll="loadWords"
+    infinite-scroll-immediate="false"
+  >
+    <!-- <el-scrollbar always> </el-scrollbar> -->
+    <el-backtop :right="30" :bottom="80" />
+    <el-container>
+      <el-header :gutter="10">
+        <el-row>
+          <Searcher></Searcher>
+        </el-row>
+        <el-row>
+          <el-col :span="18">
+            <WordInfo v-bind="wordInfoData"></WordInfo>
+          </el-col>
+          <el-col :span="2" :offset="2">
+            <WordAdder @word-added="newWordAdded"></WordAdder>
+          </el-col>
+        </el-row>
+      </el-header>
+      <el-main class="main">
+        <Word
+          v-bind="word"
+          @word-removed="wordRemoved"
+          @word-passed="wordPassed"
+          @word-edited="wordEdited"
+          class="word-box"
+          v-for="(word, index) in words"
+          :key="index"
+        ></Word>
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
 <style>
@@ -149,7 +155,9 @@ async function wordRemoved(_id: string) {
   /* padding: 1rem; */
   /* font-weight: normal; */
 }
-
+.infi {
+  height: 100vh;
+}
 .el-header {
   padding: 1rem;
   height: auto;
