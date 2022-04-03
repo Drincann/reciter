@@ -22,7 +22,7 @@
             "runtimeExecutable": "${workspaceFolder}/reciter-back/node_modules/.bin/nodemon",
             "args": [
                 "--watch",
-                "${workspaceFolder}/src",
+                "${workspaceFolder}/reciter-back/src",
             ],
             "type": "pwa-node"
         },
