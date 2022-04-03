@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd reciter-back && npm run build && cd ../reciter-front && npm run build && cd .. && mv ./reciter-back/dist . && mv ./reciter-front/dist ./dist/public",
+    "install":"cd reciter-back && npm i && cd ../reciter-front && npm i && cd ..",
+    "build": "cd reciter-back && npm run build && cd ../reciter-front && npm run build && cd .. && mv ./reciter-back/dist . && mv ./reciter-front/dist ./dist/public && mv ./reciter-back/node_modules .",
     "start": "node dist"
   },
   "keywords": [],
