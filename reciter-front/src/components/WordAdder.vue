@@ -1,13 +1,28 @@
 <script setup lang="ts">
 import { Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import axios from 'axios'
+const emit = defineEmits(['wordAdded'])
 const addWordFormVisibal = ref(false)
 const form = ref({
   word: '',
   note: '',
 })
-function addWord() {
-  console.log(form.value)
+async function addWord() {
+  const { word, note } = form.value
+  const user = 'test'
+  if (!word) {
+    return
+  }
+  const ret = await axios.post('/api/addWord', { word, note, user })
+  if (ret.data.success) {
+    form.value = {
+      word: '',
+      note: '',
+    }
+    addWordFormVisibal.value = false
+    emit('wordAdded', ret.data.data)
+  }
 }
 </script>
 
@@ -35,9 +50,7 @@ function addWord() {
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="addWordFormVisibal = false">取消</el-button>
-        <el-button type="primary" @click="addWordFormVisibal = false"
-          >添加</el-button
-        >
+        <el-button type="primary" @click="addWord">添加</el-button>
       </span>
     </template>
   </el-dialog>
